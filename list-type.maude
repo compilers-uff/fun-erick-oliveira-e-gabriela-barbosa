@@ -1,0 +1,27 @@
+   
+sload pi
+sload basic-lex
+
+fmod LISTTYPE is
+     inc QID .
+     inc RAT .
+     inc FLOAT .
+     inc STRING .
+     inc BOOL .
+     sorts Expr Idn Val .
+     sorts List .
+     subsort Idn Val < Expr < List  .
+     op idn : Qid -> Idn .
+     op nil : -> List [ctor] .
+     op _|_ : List List -> List [ctor assoc id: nil] .
+     op headIdentifier : List -> Idn .
+     op headExpression : List -> Expr .
+     op tail : List -> List .
+     var Tail : List .
+     var HeadIdentifier : Idn .
+     var HeadExpression : Expr .
+     eq headIdentifier(HeadIdentifier | Tail ) = HeadIdentifier .
+     eq headExpression(HeadExpression | Tail  ) = HeadExpression .
+     eq tail(HeadExpression | Tail) = Tail .
+     eq tail(HeadIdentifier | Tail) = Tail .
+ endfm

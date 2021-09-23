@@ -1,11 +1,12 @@
 sload pi
 sload basic-lex
+sload list-type
 
 fmod FUN-LEX is 
      inc LEXICAL .
      inc BASIC-LEX .
 
-     eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else) .
+     eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
      eq ignore = nil .
 
      var Q : Qid .
@@ -36,8 +37,9 @@ fmod FUN-GRM is
      inc FLOAT .
      inc STRING .
      inc BOOL .
+     inc LISTTYPE .
      sorts Expr Idn Val .
-     subsort Idn Val < Expr .  
+     subsort Idn Val < Expr < List .  
      op idn : Qid -> Idn .
      op rat : Rat -> Val .
      op flo : Float -> Val .
@@ -46,8 +48,8 @@ fmod FUN-GRM is
      ops _+_ _*_ _-_ _/_ _==_ _<_ _<=_ _>_ _>=_ _or_ _and_ : Expr Expr -> Expr [gather(E e) prec 20] .
      op ~_ : Expr -> Expr .
      op if_then_else_ : Expr Expr Expr -> Expr [prec 40] .
-     op fun_(_) =_ : Idn Idn Expr -> Expr [prec 50] .
-     op _(_) : Idn Expr -> Expr [prec 10] . 
+     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
+     op _(_) : Idn List -> Expr [prec 10] . 
      op _,_ : Expr Expr -> Expr [prec 60 assoc] .
  endfm 
 
@@ -69,7 +71,9 @@ fmod FUN-TRAN2 is
      inc BASIC-VALUES .
      inc ID-IR .
      inc REC-IR .
-
+     inc FORMALS .
+     inc ACTUALS .
+     inc LISTTYPE .
      op compileIdn : Idn -> Id .
      var Q : Qid .
      eq compileIdn(idn(Q)) = id(Q) .
@@ -78,7 +82,8 @@ fmod FUN-TRAN2 is
 
      var R : Rat . var F : Float . var S : String . var B : Bool .
      vars E E1 E2 E3 : Expr .
-     var I I1 I2 : Idn . 
+     var I I1 I2 I3: Idn . 
+     var argList : List .
 
      eq compileExpr(rat(R)) = exp(val(R)) .
      eq compileExpr(flo(F)) = exp(val(F)) .
@@ -102,16 +107,30 @@ fmod FUN-TRAN2 is
      eq compileExpr(if E1 then E2 else E3) = 
         ite(compileExpr(E1), compileExpr(E2), compileExpr(E3)) .
 
-     eq compileExpr(fun I1 (I2) = E) = compileDec(fun I1 (I2) = E) .
 
-     eq compileExpr(I(E)) = recapp(compileIdn(I), compileExpr(E)) .
+     eq compileExpr(fun I1 (argList) = E) = compileDec(fun I1 (argList) = E) .
 
-     eq compileExpr((fun I1 (I2) = E1, E2)) = 
-        let(compileDec(fun I1 (I2) = E1), compileExpr(E2)) .
+     eq compileExpr(I(argList)) = recapp(compileIdn(I), transformListActuals(argList)) .
 
-     op compileDec : Expr -> Dec .
-     eq compileDec(fun I1 (I2) = E) = 
-        rec(compileIdn(I1), lambda(compileIdn(I2), compileExpr(E))) . 
+     eq compileExpr((fun I1 (argList) = E1, E2)) =
+        let(compileDec(fun I1 (argList) = E1), compileExpr(E2)) .
+
+      op compileDec : Expr -> Dec .
+      eq compileDec(fun I1 (argList) = E) =
+        rec(compileIdn(I1), lambda(transformListFormals(argList) , compileExpr(E))) .
+
+
+     op transformListFormals : List ->  Formals .
+     eq transformListFormals(argList) = if tail(argList) == nil then compileIdn(headIdentifier(argList))
+                                                 else  compileIdn(headIdentifier(argList)) transformListFormals(tail(argList))
+                           fi .
+
+      op transformListActuals : List -> Actuals .
+      eq transformListActuals(argList) =  if tail(argList) == nil then compileExpr(headExpression(argList))
+                                                       else  transformListActuals(tail(argList)) compileExpr(headExpression(argList))
+                             fi .
+                       
+
 endfm
 
 fmod FUN-RUN-TIME is 
