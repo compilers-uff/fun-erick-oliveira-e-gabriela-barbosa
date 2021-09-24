@@ -2,14 +2,20 @@
 
 Utilizamos as seguintes palavras reservadas para nosso compilador
 
-## eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
+```
+
+eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
+
+```
 
 acrescentamos | a lista de palavras para utilizar para subdividir os argumetos de uma que uma funcção deve aceitar.
 
 A linhas a seguir foram editadas para aceitar uma lista 
 
-##     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
-##     op _(_) : Idn List -> Expr [prec 10] . 
+```
+     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
+     op _(_) : Idn List -> Expr [prec 10] . 
+```
 
 
 # Execução de Fib e Fat
