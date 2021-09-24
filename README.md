@@ -2,11 +2,11 @@
 
 Alunos:
 
-Erick Guimarães de Oliveira
+Erick Guimarães de Oliveira  
 Gabriela Barbosa Freitas
 
-Christiano Braga
-Instituto de Computação
+Christiano Braga  
+Instituto de Computação  
 Universidade Federal Fluminense
 
 - Data de entrega: 24/09/2021
@@ -113,14 +113,6 @@ Fun > run("apply(fat | 3)")
 
 este codigo a cima resulta em 6 como resposta.
 Onde o valor do segundo argumento dentro de apply pode ser qualquer inteiro.
-
-# Trabalho de conclusão do curso de Compiladores 2021.1
-
-Christiano Braga  
-Instituto de Computação  
-Universidade Federal Fluminense
-
-- Data de entrega: 24/09/2021
 
 # Objetivo
 
