@@ -18,9 +18,11 @@ A linhas a seguir foram editadas para aceitar uma lista
 ```
 
 
-# Execução de Fib e Fat
+# Execução de Fibinacci e Fatorial
 
-para executar o Fibonacci Normal deve-se fazer o seguinte por exemplo usando 3.
+Foi desenvoldido programas para rodar o Fibinacci e o Fatorial
+
+Para executar o Fibonacci Normal deve-se fazer o seguinte por exemplo usando 3.
 
 ```
 Maude> sload fun-io.maude
@@ -66,6 +68,8 @@ este codigo a cima resulta em 6 como resposta.
 Onde o valor dentro de fat() pode ser qualquer inteiro.
 
 
+Para o Fatorial com recurssão de cauda deve-se fazer o seguinte por exemplo usando 3. 
+
 ```
 Maude> sload fun-io.maude
 🎉 Fun Interpreter
@@ -80,7 +84,7 @@ este codigo a cima resulta em 6 como resposta.
 Onde o valor dentro de fat() pode ser qualquer inteiro.
 
 
-Para testar o apply, por exemplo, pode-se utilizar o fatorial como exemplo 
+Para testar o apply, por exemplo, pode-se utilizar o fatorial como exemplo usando o valor 3.
 
 ```
 Maude> sload fun-io.maude
