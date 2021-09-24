@@ -8,7 +8,7 @@ eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if
 
 ```
 
-acrescentamos | a lista de palavras para utilizar para subdividir os argumetos de uma que uma funcção deve aceitar.
+acrescentamos | a lista de palavras para utilizar para subdividir os argumetos de uma que uma função pode aceitar.
 
 A linhas a seguir foram editadas para aceitar uma lista 
 
