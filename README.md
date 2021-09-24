@@ -17,6 +17,7 @@ A linhas a seguir foram editadas para aceitar uma lista
      op _(_) : Idn List -> Expr [prec 10] . 
 ```
 
+as outras alterações foram feitas em nó código para que fossem aceitas listas e que tudo pudesse funcionar corretamente, conformew solicitado.
 
 # Execução de Fibinacci e Fatorial
 
