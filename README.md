@@ -16,9 +16,7 @@ Universidade Federal Fluminense
 Utilizamos as seguintes palavras reservadas para nosso compilador
 
 ```
-
 eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
-
 ```
 
 acrescentamos | a lista de palavras para utilizar para subdividir os argumetos de uma que uma função pode aceitar.
@@ -26,8 +24,8 @@ acrescentamos | a lista de palavras para utilizar para subdividir os argumetos d
 A linhas a seguir foram editadas para aceitar uma lista 
 
 ```
-     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
-     op _(_) : Idn List -> Expr [prec 10] . 
+op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
+op _(_) : Idn List -> Expr [prec 10] . 
 ```
 
 as outras alterações foram feitas em nó código para que fossem aceitas listas e que tudo pudesse funcionar corretamente, conforme solicitado.
@@ -45,7 +43,7 @@ Beta version, Sep. 2021
 Fun > fload("fib.fun")
 File fib.fun loaded!
 Fun > run("fib(3)")
-
+2
 ````
 este codigo a cima resulta em 2 como resposta.
 
@@ -75,7 +73,7 @@ Beta version, Sep. 2021
 Fun > fload("fat.fun")
 File fat.fun loaded!
 Fun > run("fat(3)")
-
+6
 ````
 
 este codigo a cima resulta em 6 como resposta.
@@ -91,7 +89,7 @@ Beta version, Sep. 2021
 fload("tail_recursion_fat.fun")
 File tail_recursion_fat.fun loaded!
 Fun > run("fat(3)")
-
+6
 ````
 
 este codigo a cima resulta em 6 como resposta.
@@ -107,7 +105,7 @@ Beta version, Sep. 2021
 Fun > fload("apply-list.fun")
 File apply-list.fun loaded!
 Fun > run("apply(fat | 3)")
-
+6
 ````
 
 este codigo a cima resulta em 6 como resposta.
