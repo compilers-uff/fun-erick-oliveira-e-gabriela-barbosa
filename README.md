@@ -1,38 +1,15 @@
-# Trabalho de conclusão do curso de Compiladores 2021.1
-
-Christiano Braga  
-Instituto de Computação  
-Universidade Federal Fluminense
-
-- Data de entrega: 24/09/2021
-
-## Objetivo
-
-Estender a linguagem Fun e seu interpretador com suporte a definição
-de uma função com um número indefinido de parâmetros e sua chamada.
-
-## Etapas
-
-1. Modifique a gramática de Fun para dar suporte a declaração de
-   funções com vários paraâmetros.
-2. Modifique o compilador de Fun para Π IR de forma que declarações e
-   expressões apropriadas sejam geradas a partir do código Fun.
-3. Teste sua estensão implementando versões que utilizem recursão de
-   cauda (_tail recursion_) das funções ```fat``` e ```fib```. Modifique também o
-   exemplo da função ```apply```.
-   
-## Palavras reservadas
+# Palavras reservadas
 
 Utilizamos as seguintes palavras reservadas para nosso compilador
 
-# eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
+## eq keywords = ('fun '`( '`) '= '`, '~ '+ '- '* '/ '>= '> '<= '< '== 'or 'and 'if 'then 'else '|) .
 
 acrescentamos | a lista de palavras para utilizar para subdividir os argumetos de uma que uma funcção deve aceitar.
 
 A linhas a seguir foram editadas para aceitar uma lista 
 
-#     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
-#     op _(_) : Idn List -> Expr [prec 10] . 
+##     op fun_(_) =_ : Idn List Expr -> Expr [prec 50] .
+##     op _(_) : Idn List -> Expr [prec 10] . 
 
 
 # Execução de Fib e Fat
@@ -112,4 +89,25 @@ Fun > run("apply(fat | 3)")
 este codigo a cima resulta em 6 como resposta.
 Onde o valor do segundo argumento dentro de apply pode ser qualquer inteiro.
 
+# Trabalho de conclusão do curso de Compiladores 2021.1
 
+Christiano Braga  
+Instituto de Computação  
+Universidade Federal Fluminense
+
+- Data de entrega: 24/09/2021
+
+# Objetivo
+
+Estender a linguagem Fun e seu interpretador com suporte a definição
+de uma função com um número indefinido de parâmetros e sua chamada.
+
+# Etapas
+
+1. Modifique a gramática de Fun para dar suporte a declaração de
+   funções com vários paraâmetros.
+2. Modifique o compilador de Fun para Π IR de forma que declarações e
+   expressões apropriadas sejam geradas a partir do código Fun.
+3. Teste sua estensão implementando versões que utilizem recursão de
+   cauda (_tail recursion_) das funções ```fat``` e ```fib```. Modifique também o
+   exemplo da função ```apply```.
