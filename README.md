@@ -2,11 +2,11 @@
 
 Alunos:
 
-Erick Guimarães de Oliveira 
+Erick Guimarães de Oliveira
 Gabriela Barbosa Freitas
 
-Christiano Braga  
-Instituto de Computação  
+Christiano Braga
+Instituto de Computação
 Universidade Federal Fluminense
 
 - Data de entrega: 24/09/2021
